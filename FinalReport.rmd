@@ -162,4 +162,5 @@ According to the fisher test, odds ratio of people who got the vaccine are 50% l
   
   In the case of drug users, we can see that only 33.33% of those who were given the vaccine were infected while 66.67% of those who were given the placebo were infected. When we take a look at the Fisher's Exact Test, the drug users who received the vaccine had about half the chances (0.5455) of contracting the infection than the drug users who were given the placebo. We can also see that the p-value is 0.002273 which is less than 0.05, meaning we reject the null hypothesis. We can conclude that the vaccine was effective in preventing COVID-19 for drug users who received it. 
   
-  
+  Finally, we conclude that in all these cases we reject the null hypothesis as the drug had an effect on all 4 groups although the effects were not all the same. In the case of women and drug users, the vaccine proved to be effective in preventing infection. While it was positively effective for both groups, it was even more effective for drug users. In the case of the men and LGBTQ, we conclude that the vaccine was effective in achieving the opposite effect and made those who took it more susceptible to COVID-19. Again, even though the vaccine had negative effects on both groups, the vaccine proved to be more harmful to the LGBTQ.
+

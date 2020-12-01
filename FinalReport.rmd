@@ -53,6 +53,37 @@ fisher.test(table1)
 ```
 What this result shows is that odds ratio of people who got the vaccine their odds of getting COVID was about 5 to 1, which means the vaccine is effective.
 
+## Analysis for Males
+
+```{r}
+dataF=filter(FinalData,sex=="guy")
+```
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+```{r}
+barchartGC(~infected + treatment,data=dataF)
+barchartGC(~infected + treatment,data=dataF, type="percent")
+
+```
+
+  From this chart, we can see that out of those men who were infected with covid, about 40% had the placebo while almost 60% had the drug. This shows about a 20% difference, so in this case the drug was not effective in preventing covid.
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=dataF)
+rowPerc(table1)
+colPerc(table1)
+```
+From the numerical summary here, we can see that 41.84% of the males who were infected were given the placebo. 58.16% of the males who were infected were given the drug, this is higher than those males who were infected and given the placebo. Again, based on the percentages, we can see that the drug was not effective in preventing covid.
+
+```{r}
+fisher.test(table1)
+```
+The fisher test result shows is that there was a 1.47 chance (or 47% chance) higher of contracting COVID if the men were given the vaccine than those who were given the placebo. This would indicate that there was an association between the vaccine and contracting the infection.
+
+
+
+
+
 
 
 # Discussion and Conclusion
@@ -62,3 +93,5 @@ What this result shows is that odds ratio of people who got the vaccine their od
 
   
   In the case of women, we can see that women who were given the drug/vaccine were less likely to contract COVID-19 than those who were given the placebo. A total of 33.11% of the women who were infected had been given the vaccine, while 66.89% who were infected were given the placebo. The Fisher's Exact Test showed that the women who were given the vaccine were 50% less likely to get infected. It also showed us a p-value of 2.2e-16, which is less than 0.05, therefore we reject the null hypothesis as the drug/vaccine proved to be effective in preventing COVID-19 for women.
+  
+  In the case of the men, we can see that out of the men who were infected with COVID-19, 41.84% of the males who were infected were given the placebo while 58.16% of the males who were infected were given the drug. The Fisher's Exact Test for men showed that they had a 1.47 chance higher of contracting COVID if given the vaccine than those who were given the placebo. Fisher's Exact Test showed us as well a p-value of 0.0005801. Although this is less than 0.05 and although we reject the null hypothesis, we conclude that the drug/vaccine was effective in creating the opposite of the desired outcome. This means the drug/vaccine was effective in helping contract COVID-19.

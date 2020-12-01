@@ -1,7 +1,7 @@
 ---
-title: "Covid91 vaccine study Final2020"
-author: "Put your name here!"
-date: "put the date here"
+title: "Covid19 vaccine study Final2020"
+author: "Cyann Arevalo"
+date: "November 2020"
 output: html_document
 ---
 
@@ -18,7 +18,7 @@ FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine.
+A new  preventative vaccine (covid19) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine.
 
 # Methods
 
@@ -27,9 +27,38 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+```{r}
+dataF=filter(FinalData,sex=="gal")
+```
+
+
+```{r}
+barchartGC(~infected + treatment,data=dataF)
+barchartGC(~infected + treatment,data=dataF, type="percent")
+
+```
+
+
+  We can see here that twice the number of women who got the placebo were infected than the women who received the drug/vaccine. This shows us that the drug is effective.
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=dataF)
+rowPerc(table1)
+colPerc(table1)
+```
+Here we can also see that among those who were infected, 66.89% had the placebo while only 33.11% had the drug. This again shows that the vaccine was effective in preventing infection.
+
+```{r}
+fisher.test(table1)
+```
+What this result shows is that odds ratio of people who got the vaccine their odds of getting COVID was about 5 to 1, which means the vaccine is effective.
 
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+
+  
+  In the case of women, we can see that women who were given the drug/vaccine were less likely to contract COVID-19 than those who were given the placebo. A total of 33.11% of the women who were infected had been given the vaccine, while 66.89% who were infected were given the placebo. The Fisher's Exact Test showed that the women who were given the vaccine were 50% less likely to get infected. It also showed us a p-value of 2.2e-16, which is less than 0.05, therefore we reject the null hypothesis as the drug/vaccine proved to be effective in preventing COVID-19 for women.
